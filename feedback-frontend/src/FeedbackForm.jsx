@@ -19,10 +19,64 @@ export default function FeedbackForm() {
             setStatus("❌ Failed to submit feedback.");
         }
     };
- 
+
+    const styles = {
+        container: {
+            padding: "30px",
+            maxWidth: "400px",
+            margin: "40px auto",
+            background: "#f9f9f9",
+            borderRadius: "10px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        },
+        heading: {
+            textAlign: "center",
+            marginBottom: "20px",
+            color: "#333",
+        },
+        input: {
+            width: "100%",
+            padding: "10px",
+            margin: "8px 0",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+            fontSize: "16px",
+        },
+        textarea: {
+            width: "100%",
+            padding: "10px",
+            minHeight: "80px",
+            margin: "8px 0",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+            fontSize: "16px",
+            resize: "vertical",
+        },
+        button: {
+            width: "100%",
+            padding: "12px",
+            background: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            fontSize: "16px",
+            cursor: "pointer",
+            marginTop: "10px",
+            transition: "background 0.2s",
+        },
+        buttonHover: {
+            background: "#0056b3",
+        },
+        status: {
+            textAlign: "center",
+            marginTop: "15px",
+            fontWeight: "bold",
+        },
+    };
+
     return (
-        <div style={{ padding: "20px" }}>
-            <h2>Feedback Form</h2>
+        <div style={styles.container}>
+            <h2 style={styles.heading}>Feedback Form</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     name="name"
@@ -30,7 +84,8 @@ export default function FeedbackForm() {
                     value={form.name}
                     onChange={handleChange}
                     required
-                /><br /><br />
+                    style={styles.input}
+                /><br />
                 <input
                     type="email"
                     name="email"
@@ -38,17 +93,26 @@ export default function FeedbackForm() {
                     value={form.email}
                     onChange={handleChange}
                     required
-                /><br /><br />
+                    style={styles.input}
+                /><br />
                 <textarea
                     name="message"
                     placeholder="Your Feedback"
                     value={form.message}
                     onChange={handleChange}
                     required
-                /><br /><br />
-                <button type="submit">Submit</button>
+                    style={styles.textarea}
+                /><br />
+                <button
+                    type="submit"
+                    style={styles.button}
+                    onMouseOver={e => e.currentTarget.style.background = styles.buttonHover.background}
+                    onMouseOut={e => e.currentTarget.style.background = styles.button.background}
+                >
+                    Submit
+                </button>
             </form>
-            <p>{status}</p>
+            <p style={styles.status}>{status}</p>
         </div>
     );
 }
