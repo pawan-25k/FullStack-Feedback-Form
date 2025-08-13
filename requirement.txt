@@ -1,0 +1,20 @@
+Backend
+--------------- 
+mkdir feedback-backend
+cd feedback-backend
+npm init -y
+npm install express mongoose cors
+
+Create server.js file
+node server.js
+
+========================================
+
+Frontend
+--------------
+npx create-react-app feedback-frontend
+cd feedback-frontend
+npm install axios
+
+create Feedbackform.jsx
+npm start
